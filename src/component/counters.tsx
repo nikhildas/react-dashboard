@@ -1,9 +1,9 @@
 import {Component, Key, MouseEventHandler} from "react";
 import Counter from "./counter";
 
-class Counters extends Component<{ counters: any, onDelete: Function, onIncrement: Function, onReset: MouseEventHandler }> {
+class Counters extends Component<{ counters: any, onDelete: Function, onIncrement: Function, onReset: MouseEventHandler, onDecrement: Function }> {
     render() {
-        const {onReset, counters, onDelete, onIncrement} = this.props
+        const {onReset, counters, onDelete, onIncrement, onDecrement} = this.props
 
         return (
             <div>
@@ -14,6 +14,7 @@ class Counters extends Component<{ counters: any, onDelete: Function, onIncremen
                         key={counter.id}
                         onDelete={(counterID: number) => onDelete(counterID)}
                         onIncrement={(counter: any) => onIncrement(counter)}
+                        onDecrement={(counter: any) => onDecrement(counter)}
                         counter={counter}/>
                 ))}
             </div>

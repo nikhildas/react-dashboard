@@ -1,19 +1,27 @@
 import {Component} from "react";
+import Button from '@mui/material/Button';
 
-class Counter extends Component<{ counter: any, onDelete: Function, onIncrement: Function }> {
+class Counter extends Component<{ counter: any, onDelete: Function, onIncrement: Function, onDecrement: Function }> {
     render() {
-        const {onIncrement, onDelete, counter} = this.props
+        const {onIncrement, onDelete, counter, onDecrement} = this.props
         return (
             <div>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button
+                <Button variant="contained"
+                        color="success"
                     onClick={() => onIncrement(counter)}
-                    className="btn btn-secondary btn-sm">Increment
-                </button>
-                <button
+                    className="btn btn-secondary btn-sm">+
+                </Button >
+                <Button variant="contained"
+                        color="error"
+                        onClick={() => onDecrement(counter)}
+                        className="btn btn-secondary btn-sm">-
+                </Button >
+                <Button variant="contained"
+                        color="error"
                     onClick={() => onDelete(counter.id)}
-                    className={"btn btn-danger btn-sm m-2"}>Delete
-                </button>
+                    className={"m-2"}>Delete
+                </Button >
             </div>);
     }
 
