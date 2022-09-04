@@ -10,6 +10,7 @@ class Counters extends Component<{ counters: any, onDelete: Function, onIncremen
                 <button onClick={onReset} className="btn btn-primary btn-sm m-2">Reset
                 </button>
                 <table>
+                    <tbody>
                     {counters.map((counter: { id: Key; }) => (
                         <Counter
                             key={counter.id}
@@ -18,6 +19,7 @@ class Counters extends Component<{ counters: any, onDelete: Function, onIncremen
                             onDecrement={(counter: any) => onDecrement(counter)}
                             counter={counter}/>
                     ))}
+                    </tbody>
                 </table>
             </div>
         );

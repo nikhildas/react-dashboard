@@ -9,25 +9,22 @@ class Counter extends Component<{ counter: any, onDelete: Function, onIncrement:
         const {onIncrement, onDelete, counter, onDecrement} = this.props
         return (
             <tr>
-                <td><span className={this.getBadgeClasses()}>{this.formatCount()}</span></td>
-                <Button variant="contained"
-                        color="success"
-                        startIcon={<AddIcon />}
-                        onClick={() => onIncrement(counter)}
-                        className="btn btn-secondary btn-sm">
-                </Button>
-                <Button variant="contained"
-                        color="error"
-                        startIcon={<RemoveIcon />}
-                        onClick={() => onDecrement(counter)}
-                        className="btn btn-secondary btn-sm">
-                </Button>
-                <Button variant="outlined"
-                        color="error"
-                        startIcon={<DeleteIcon/>}
-                        onClick={() => onDelete(counter.id)}
-                        className={"m-2"}>Delete
-                </Button>
+                <td width="80px"><span className={this.getBadgeClasses()}>{this.formatCount()}</span></td>
+                <td><Button variant="contained"
+                            color="success"
+                            startIcon={<AddIcon/>}
+                            onClick={() => onIncrement(counter)}
+                            className="btn btn-secondary btn-sm"/></td>
+                <td><Button variant="contained"
+                            color="error"
+                            startIcon={<RemoveIcon/>}
+                            onClick={() => onDecrement(counter)}
+                            className="btn btn-secondary btn-sm"/></td>
+                <td><Button variant="outlined"
+                            color="error"
+                            startIcon={<DeleteIcon/>}
+                            onClick={() => onDelete(counter.id)}
+                            className={"m-2"}>Delete</Button></td>
             </tr>);
     }
 
