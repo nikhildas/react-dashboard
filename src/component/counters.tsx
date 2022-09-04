@@ -9,14 +9,16 @@ class Counters extends Component<{ counters: any, onDelete: Function, onIncremen
             <div>
                 <button onClick={onReset} className="btn btn-primary btn-sm m-2">Reset
                 </button>
-                {counters.map((counter: { id: Key; }) => (
-                    <Counter
-                        key={counter.id}
-                        onDelete={(counterID: number) => onDelete(counterID)}
-                        onIncrement={(counter: any) => onIncrement(counter)}
-                        onDecrement={(counter: any) => onDecrement(counter)}
-                        counter={counter}/>
-                ))}
+                <table>
+                    {counters.map((counter: { id: Key; }) => (
+                        <Counter
+                            key={counter.id}
+                            onDelete={(counterID: number) => onDelete(counterID)}
+                            onIncrement={(counter: any) => onIncrement(counter)}
+                            onDecrement={(counter: any) => onDecrement(counter)}
+                            counter={counter}/>
+                    ))}
+                </table>
             </div>
         );
     }

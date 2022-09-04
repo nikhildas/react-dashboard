@@ -1,28 +1,34 @@
 import {Component} from "react";
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 class Counter extends Component<{ counter: any, onDelete: Function, onIncrement: Function, onDecrement: Function }> {
     render() {
         const {onIncrement, onDelete, counter, onDecrement} = this.props
         return (
-            <div>
-                <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+            <tr>
+                <td><span className={this.getBadgeClasses()}>{this.formatCount()}</span></td>
                 <Button variant="contained"
                         color="success"
-                    onClick={() => onIncrement(counter)}
-                    className="btn btn-secondary btn-sm">+
-                </Button >
+                        startIcon={<AddIcon />}
+                        onClick={() => onIncrement(counter)}
+                        className="btn btn-secondary btn-sm">
+                </Button>
                 <Button variant="contained"
                         color="error"
+                        startIcon={<RemoveIcon />}
                         onClick={() => onDecrement(counter)}
-                        className="btn btn-secondary btn-sm">-
-                </Button >
-                <Button variant="contained"
+                        className="btn btn-secondary btn-sm">
+                </Button>
+                <Button variant="outlined"
                         color="error"
-                    onClick={() => onDelete(counter.id)}
-                    className={"m-2"}>Delete
-                </Button >
-            </div>);
+                        startIcon={<DeleteIcon/>}
+                        onClick={() => onDelete(counter.id)}
+                        className={"m-2"}>Delete
+                </Button>
+            </tr>);
     }
 
     private getBadgeClasses() {
