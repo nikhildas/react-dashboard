@@ -17,6 +17,18 @@ class App extends Component {
         country_capital: "",
     };
 
+    handleCreate = () => {
+        const counters = this.state.counters
+        counters.push({id: counters.length, value: 0})
+
+        console.log("Created event handler called with counter ID: ", counters.length - 1)
+        this.setState({counters})
+    }
+
+    handleDeleteAll = () => {
+        this.setState({counters: []})
+    }
+
     handleDelete = (counterID: number) => {
         const counters = this.state.counters.filter(c => c.id !== counterID)
         this.setState({counters})
@@ -59,6 +71,7 @@ class App extends Component {
         const country_name_uri = "https://restcountries.com/v3.1/name/"
         axios.get(country_name_uri + this.state.country_name)
             .then((response => {
+                    this.setState({country_name: response.data[0].name.common})
                     this.setState({country_capital: response.data[0].capital[0]})
                     console.log("Getting capital")
                 })
@@ -78,6 +91,8 @@ class App extends Component {
                         onIncrement={this.handleIncrement}
                         onDecrement={this.handeDecrement}
                         onDelete={this.handleDelete}
+                        onCreate={this.handleCreate}
+                        onDeleteAll={this.handleDeleteAll}
                     />
                 </main>
                 <table>
@@ -94,7 +109,7 @@ class App extends Component {
                         <td><Button
                             variant="contained"
                             className="m-2 align-self-center"
-                            onClick={() => this.handleGetCountryDetails()}>Country</Button></td>
+                            onClick={() => this.handleGetCountryDetails()}>Get Capital</Button></td>
                         <td><TextField
                             disabled
                             id="country-capital"
